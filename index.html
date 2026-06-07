@@ -1,0 +1,1077 @@
+="showPage('home',this)">Home</a>
+    <a href="#" onclick="showPage('products',this)">Products</a>
+    <a href="#" onclick="showPage('categories',this)">Categories</a>
+    <a href="#" onclick="showPage('about',this)">About Us</a>
+    <a href="#" onclick="showPage('about',this)">Contact</a>
+  </div>
+  <div class="footer-copy">© 2024 Geozenix Innovations LLP. All rights reserved.</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Geozenix Innovations LLP</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --black:#0a0a0a;
+  --white:#ffffff;
+  --gold:#c9a84c;
+  --gold-light:#e8c97a;
+  --grey-dark:#1a1a1a;
+  --grey-mid:#2a2a2a;
+  --grey-light:#f5f5f0;
+  --text-muted:#888;
+  --border:#2e2e2e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+}
+/* HEADER */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;
+  height:80px;
+  background:rgba(10,10,10,0.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.logo-wrap{
+  display:flex;align-items:center;gap:14px;
+}
+.logo-wrap img{
+  width:54px;height:54px;
+  filter:invert(1) sepia(1) saturate(0) hue-rotate(0deg);
+  object-fit:contain;
+}
+.logo-text h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  line-height:1.2;
+}
+.logo-text p{
+  font-size:9px;letter-spacing:3px;
+  color:var(--gold);text-transform:uppercase;
+}
+nav{display:flex;gap:8px;align-items:center;}
+nav a{
+  color:var(--white);text-decoration:none;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  padding:8px 16px;
+  transition:color .2s;
+  opacity:.8;
+}
+nav a:hover,nav a.active{color:var(--gold);opacity:1;}
+.nav-cta{
+  background:var(--gold);color:var(--black)!important;
+  border-radius:2px;font-weight:600;
+  opacity:1!important;
+}
+.nav-cta:hover{background:var(--gold-light)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+.hamburger span{width:24px;height:2px;background:var(--white);display:block;transition:.3s;}
+
+/* PAGES */
+.page{
+  display:none;
+  min-height:100vh;
+  padding-top:80px;
+}
+.page.active{display:block;}
+
+/* === HOME PAGE === */
+.hero{
+  position:relative;
+  min-height:calc(100vh - 80px);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:var(--black);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%, #1a1208 0%, #0a0a0a 100%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,.05) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content{
+  position:relative;z-index:2;
+  text-align:center;
+  max-width:860px;
+  padding:0 24px;
+  animation:fadeUp .9s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+.hero-badge{
+  display:inline-block;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  padding:6px 20px;margin-bottom:28px;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,7vw,88px);
+  font-weight:600;line-height:1.05;
+  margin-bottom:24px;
+}
+.hero-title span{color:var(--gold);}
+.hero-sub{
+  font-size:13px;letter-spacing:2px;
+  color:rgba(255,255,255,.6);
+  max-width:500px;margin:0 auto 40px;
+  line-height:1.8;
+}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:var(--black);
+  border:none;padding:14px 36px;
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;
+  text-decoration:none;display:inline-block;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{
+  background:transparent;color:var(--white);
+  border:1px solid rgba(255,255,255,.3);
+  padding:14px 36px;
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;
+  text-decoration:none;display:inline-block;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+.stats-bar{
+  background:var(--grey-dark);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  display:flex;
+}
+.stat-item{
+  flex:1;padding:32px 24px;text-align:center;
+  border-right:1px solid var(--border);
+}
+.stat-item:last-child{border-right:none;}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:40px;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.stat-label{
+  font-size:10px;letter-spacing:2px;
+  color:rgba(255,255,255,.5);
+  text-transform:uppercase;margin-top:6px;
+}
+
+.features-sec{
+  padding:100px 40px;
+  max-width:1200px;margin:0 auto;
+}
+.sec-header{text-align:center;margin-bottom:64px;}
+.sec-tag{
+  font-size:10px;letter-spacing:4px;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:12px;display:block;
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,52px);
+  font-weight:600;
+}
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.feature-card{
+  background:var(--grey-dark);
+  padding:48px 36px;
+  transition:background .2s;
+}
+.feature-card:hover{background:var(--grey-mid);}
+.feature-icon{
+  font-size:32px;margin-bottom:20px;
+}
+.feature-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;
+  margin-bottom:12px;
+}
+.feature-card p{
+  font-size:13px;color:rgba(255,255,255,.55);
+  line-height:1.8;
+}
+
+/* === PRODUCTS PAGE === */
+.products-header{
+  background:var(--grey-dark);
+  border-bottom:1px solid var(--border);
+  padding:48px 40px 40px;
+}
+.products-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,48px);
+  font-weight:600;margin-bottom:8px;
+}
+.products-header p{
+  color:var(--text-muted);font-size:13px;letter-spacing:1px;
+}
+
+.products-toolbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 40px;
+  border-bottom:1px solid var(--border);
+  background:var(--grey-dark);
+  flex-wrap:wrap;gap:12px;
+}
+.filter-group{display:flex;gap:8px;flex-wrap:wrap;}
+.filter-btn{
+  background:transparent;border:1px solid var(--border);
+  color:rgba(255,255,255,.6);
+  padding:7px 16px;font-size:11px;letter-spacing:1px;
+  cursor:pointer;transition:all .2s;
+  font-family:'Montserrat',sans-serif;
+  text-transform:uppercase;
+}
+.filter-btn:hover,.filter-btn.active{
+  border-color:var(--gold);color:var(--gold);
+}
+.sort-select{
+  background:var(--grey-mid);border:1px solid var(--border);
+  color:var(--white);padding:8px 14px;
+  font-size:11px;letter-spacing:1px;
+  font-family:'Montserrat',sans-serif;
+  text-transform:uppercase;cursor:pointer;
+}
+.sort-select option{background:var(--grey-mid);}
+
+.products-count{
+  padding:16px 40px;
+  font-size:12px;color:var(--text-muted);
+  letter-spacing:1px;
+}
+
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1px;
+  background:var(--border);
+  margin:0 1px;
+}
+.product-card{
+  background:var(--grey-dark);
+  cursor:pointer;
+  transition:background .2s;
+  overflow:hidden;
+  position:relative;
+}
+.product-card:hover{background:var(--grey-mid);}
+.product-card:hover .product-overlay{opacity:1;}
+.product-img-wrap{
+  aspect-ratio:1;
+  background:var(--grey-mid);
+  overflow:hidden;position:relative;
+}
+.product-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;
+  color:rgba(255,255,255,.15);
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  background:linear-gradient(135deg, #1a1a1a 0%, #222 100%);
+  transition:transform .4s;
+}
+.product-card:hover .product-placeholder{transform:scale(1.04);}
+.product-icon-large{font-size:48px;opacity:.3;}
+.sale-badge{
+  position:absolute;top:12px;left:12px;
+  background:var(--gold);color:var(--black);
+  font-size:9px;font-weight:700;letter-spacing:2px;
+  padding:4px 10px;text-transform:uppercase;
+}
+.product-overlay{
+  position:absolute;inset:0;
+  background:rgba(201,168,76,.08);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .2s;
+}
+.overlay-btn{
+  background:var(--gold);color:var(--black);
+  border:none;padding:10px 24px;
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;cursor:pointer;
+  font-family:'Montserrat',sans-serif;
+}
+.product-info{padding:20px;}
+.product-cat{
+  font-size:9px;letter-spacing:2px;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:6px;
+}
+.product-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:600;margin-bottom:10px;
+  line-height:1.3;
+}
+.product-price-row{display:flex;align-items:baseline;gap:10px;}
+.price-new{
+  font-size:16px;font-weight:600;color:var(--gold);
+}
+.price-old{
+  font-size:13px;text-decoration:line-through;
+  color:var(--text-muted);
+}
+
+/* === CATEGORIES PAGE === */
+.cats-header{
+  background:var(--grey-dark);
+  border-bottom:1px solid var(--border);
+  padding:48px 40px 40px;
+}
+.cats-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,48px);font-weight:600;
+  margin-bottom:8px;
+}
+.cats-header p{color:var(--text-muted);font-size:13px;}
+.cats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1px;background:var(--border);
+  padding:1px;margin:1px;
+}
+.cat-card{
+  background:var(--grey-dark);
+  padding:0;overflow:hidden;position:relative;
+  cursor:pointer;transition:background .2s;
+  min-height:280px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+.cat-card:hover{background:var(--grey-mid);}
+.cat-card:hover .cat-bg{transform:scale(1.06);}
+.cat-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#1a1a10 0%,#0e0e0e 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-size:80px;opacity:.08;
+  transition:transform .5s;
+}
+.cat-content{
+  position:relative;z-index:2;
+  padding:28px;
+  background:linear-gradient(0deg,rgba(10,10,10,.95) 0%,transparent 100%);
+}
+.cat-tag{
+  font-size:9px;letter-spacing:3px;
+  color:var(--gold);text-transform:uppercase;margin-bottom:8px;
+}
+.cat-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:700;margin-bottom:6px;
+}
+.cat-count{
+  font-size:11px;color:rgba(255,255,255,.45);
+  letter-spacing:1px;
+}
+.cat-arrow{
+  display:inline-block;margin-top:12px;
+  font-size:11px;color:var(--gold);letter-spacing:2px;
+}
+
+/* === ABOUT PAGE === */
+.about-hero{
+  background:var(--grey-dark);
+  border-bottom:1px solid var(--border);
+  padding:80px 40px;
+  display:flex;gap:60px;align-items:center;
+  flex-wrap:wrap;
+}
+.about-logo-side{
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.about-logo-img{
+  width:180px;height:180px;
+  object-fit:contain;
+  filter:invert(1) sepia(1) saturate(0.5) hue-rotate(20deg);
+}
+.about-intro{flex:1;min-width:280px;}
+.about-intro h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,52px);
+  font-weight:700;margin-bottom:16px;
+}
+.about-intro h2 span{color:var(--gold);}
+.about-intro p{
+  color:rgba(255,255,255,.65);line-height:1.9;
+  font-size:14px;margin-bottom:16px;
+}
+
+.about-body{max-width:1100px;margin:0 auto;padding:64px 40px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:60px;}
+.about-card{
+  background:var(--grey-dark);
+  border:1px solid var(--border);
+  padding:36px;
+}
+.about-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;
+  margin-bottom:14px;
+  color:var(--gold);
+}
+.about-card p{
+  color:rgba(255,255,255,.6);font-size:13px;
+  line-height:1.9;
+}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.contact-item{
+  background:var(--grey-dark);padding:32px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.contact-icon{
+  font-size:22px;flex-shrink:0;margin-top:2px;
+}
+.contact-item h4{
+  font-size:10px;letter-spacing:2px;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:8px;
+}
+.contact-item p{
+  color:rgba(255,255,255,.7);font-size:13px;
+  line-height:1.7;
+}
+.contact-item a{color:var(--gold-light);text-decoration:none;}
+.contact-item a:hover{text-decoration:underline;}
+
+/* MAP PLACEHOLDER */
+.map-wrap{
+  margin:40px 0;
+  background:var(--grey-dark);
+  border:1px solid var(--border);
+  padding:24px;
+}
+.map-inner{
+  background:var(--grey-mid);
+  height:240px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);
+  color:rgba(255,255,255,.3);
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  flex-direction:column;gap:8px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--grey-dark);
+  border-top:1px solid var(--border);
+  padding:40px;
+  text-align:center;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:700;letter-spacing:2px;
+  color:var(--gold);margin-bottom:12px;
+}
+.footer-links{
+  display:flex;gap:24px;justify-content:center;
+  margin-bottom:20px;flex-wrap:wrap;
+}
+.footer-links a{
+  color:rgba(255,255,255,.4);text-decoration:none;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  transition:color .2s;
+}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{
+  font-size:11px;color:rgba(255,255,255,.25);
+  letter-spacing:1px;
+}
+
+/* MODAL */
+.modal-backdrop{
+  display:none;
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;
+  padding:24px;
+}
+.modal-backdrop.open{display:flex;}
+.modal{
+  background:var(--grey-dark);
+  border:1px solid var(--border);
+  max-width:600px;width:100%;
+  padding:0;overflow:hidden;
+  animation:popIn .25s ease;
+}
+@keyframes popIn{from{transform:scale(.92);opacity:0;}to{transform:scale(1);opacity:1;}}
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 28px;
+  border-bottom:1px solid var(--border);
+}
+.modal-header h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:600;
+}
+.modal-close{
+  background:none;border:none;color:var(--text-muted);
+  font-size:22px;cursor:pointer;padding:4px;
+  transition:color .2s;
+}
+.modal-close:hover{color:var(--white);}
+.modal-body{padding:28px;}
+.modal-img{
+  aspect-ratio:1;background:var(--grey-mid);
+  display:flex;align-items:center;justify-content:center;
+  font-size:60px;opacity:.2;margin-bottom:20px;
+}
+.modal-cat{
+  font-size:9px;letter-spacing:3px;color:var(--gold);
+  text-transform:uppercase;margin-bottom:8px;
+}
+.modal-desc{
+  color:rgba(255,255,255,.6);font-size:13px;
+  line-height:1.9;margin-bottom:20px;
+}
+.modal-price-row{
+  display:flex;align-items:baseline;gap:12px;margin-bottom:24px;
+}
+.modal-price-new{font-size:28px;font-weight:600;color:var(--gold);}
+.modal-price-old{font-size:16px;color:var(--text-muted);text-decoration:line-through;}
+.modal-footer{
+  display:flex;gap:12px;
+  padding:20px 28px;
+  border-top:1px solid var(--border);
+}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:24px;right:24px;z-index:3000;
+  background:var(--gold);color:var(--black);
+  padding:12px 24px;font-size:12px;font-weight:600;letter-spacing:1px;
+  transform:translateY(80px);opacity:0;
+  transition:all .3s;
+  pointer-events:none;
+}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  header{padding:0 20px;}
+  nav{display:none;position:fixed;top:80px;left:0;right:0;
+    flex-direction:column;background:var(--grey-dark);
+    border-bottom:1px solid var(--border);padding:16px;gap:4px;}
+  nav.open{display:flex;}
+  .hamburger{display:flex;}
+  .stats-bar{flex-wrap:wrap;}
+  .stat-item{flex:1 1 50%;border:none;border-bottom:1px solid var(--border);}
+  .features-grid{grid-template-columns:1fr;}
+  .about-hero{flex-direction:column;text-align:center;padding:48px 24px;}
+  .about-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .products-toolbar{flex-direction:column;align-items:flex-start;}
+  .products-header,.cats-header,.about-body{padding:32px 20px;}
+  .features-sec{padding:60px 20px;}
+  footer{padding:28px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-wrap">
+
+
+
+
+    <img src="GEO LOGO LITE.png" alt="Geozenix Innovations LLP Logo"/>
+
+
+
+    <div class="logo-text">
+      <h1>Geozenix</h1>
+      <p>Innovations LLP</p>
+    </div>
+  </div>
+  <nav id="mainNav">
+    <a href="#" class="active" onclick="showPage('home',this)">Home</a>
+    <a href="#" onclick="showPage('products',this)">All Products</a>
+    <a href="#" onclick="showPage('categories',this)">Category</a>
+    <a href="#" onclick="showPage('about',this)">About Us</a>
+    <a href="#" class="nav-cta" onclick="showPage('about',this)">Contact</a>
+  </nav>
+  <div class="hamburger" onclick="toggleNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ===== HOME PAGE ===== -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Geozenix Innovations LLP · Bengaluru</div>
+      <h1 class="hero-title">
+        Premium Products.<br/>
+        <span>Innovation Delivered.</span>
+      </h1>
+      <p class="hero-sub">
+        Precision-engineered solutions for those who demand excellence.
+        Discover our curated catalog of premium offerings.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('products',null)">Explore Products</button>
+        <button class="btn-outline" onclick="showPage('about',null)">About Us</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Products</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12+</div>
+      <div class="stat-label">Categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5★</div>
+      <div class="stat-label">Customer Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Pan India</div>
+      <div class="stat-label">Delivery</div>
+    </div>
+  </div>
+
+  <section class="features-sec">
+    <div class="sec-header">
+      <span class="sec-tag">Why Choose Us</span>
+      <h2 class="sec-title">Crafted for Excellence</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Precision Engineering</h3>
+        <p>Every product is designed with meticulous attention to detail, ensuring superior quality and performance that meets the highest standards.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Global Perspective</h3>
+        <p>Innovative solutions informed by global best practices, brought to you from our base in Bengaluru — India's innovation capital.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast Delivery</h3>
+        <p>Swift pan-India shipping with secure packaging. Your orders are processed and dispatched with the urgency they deserve.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Quality Assured</h3>
+        <p>Rigorous quality control processes ensure every item meets our exacting standards before it reaches your doorstep.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💎</div>
+        <h3>Premium Selection</h3>
+        <p>A curated collection spanning multiple categories, each chosen for its exceptional quality and value proposition.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>Dedicated Support</h3>
+        <p>Our team in Bengaluru is always ready to assist. Reach us at geozenixinnovations@gmail.com for personalised service.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== PRODUCTS PAGE ===== -->
+<div class="page" id="page-products">
+  <div class="products-header">
+    <h2>All Products</h2>
+    <p>Explore our complete catalog · <span id="prod-count">Loading...</span></p>
+  </div>
+  <div class="products-toolbar">
+    <div class="filter-group" id="filterGroup">
+      <button class="filter-btn active" onclick="filterProducts('All',this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('Technology',this)">Technology</button>
+      <button class="filter-btn" onclick="filterProducts('Innovation',this)">Innovation</button>
+      <button class="filter-btn" onclick="filterProducts('Solutions',this)">Solutions</button>
+      <button class="filter-btn" onclick="filterProducts('Industrial',this)">Industrial</button>
+      <button class="filter-btn" onclick="filterProducts('Commercial',this)">Commercial</button>
+    </div>
+    <select class="sort-select" onchange="sortProducts(this.value)">
+      <option value="featured">Sort: Featured</option>
+      <option value="price-low">Price: Low to High</option>
+      <option value="price-high">Price: High to Low</option>
+      <option value="name">Name: A–Z</option>
+    </select>
+  </div>
+  <div class="products-count" id="productsCount"></div>
+  <div class="products-grid" id="productsGrid"></div>
+</div>
+
+<!-- ===== CATEGORIES PAGE ===== -->
+<div class="page" id="page-categories">
+  <div class="cats-header">
+    <h2>Browse by Category</h2>
+    <p>Find exactly what you need across our curated product categories</p>
+  </div>
+  <div class="cats-grid" id="catsGrid"></div>
+</div>
+
+<!-- ===== ABOUT PAGE ===== -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="about-logo-side">
+HTMLEOF3
+
+cat >> /home/claude/geozenix_website.html << HTMLEOF4
+      <img class="about-logo-img" src="data:image/jpeg;base64,${LOGO_B64}" alt="Geozenix Innovations LLP"/>
+HTMLEOF4
+
+cat >> /home/claude/geozenix_website.html << 'HTMLEOF5'
+    </div>
+    <div class="about-intro">
+      <h2>About <span>Geozenix Innovations LLP</span></h2>
+      <p>
+        Geozenix Innovations LLP (GIL) is a Bengaluru-based enterprise committed to delivering
+        precision-engineered products and innovative solutions across India. With a global outlook
+        and a local heart, we serve customers who demand nothing but the best.
+      </p>
+      <p>
+        Founded with the vision of making premium, high-quality products accessible to all,
+        Geozenix Innovations brings together expertise, passion, and a relentless pursuit of
+        excellence in everything we do.
+      </p>
+      <button class="btn-primary" onclick="scrollToContact()">Get in Touch</button>
+    </div>
+  </div>
+
+  <div class="about-body">
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>🎯 Our Mission</h3>
+        <p>
+          To deliver innovative, high-quality products and solutions that empower businesses
+          and individuals to achieve their goals. We are committed to precision, reliability,
+          and customer satisfaction above all else.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>🌐 Our Vision</h3>
+        <p>
+          To be India's most trusted innovation-driven enterprise — a company that combines
+          global thinking with local expertise to create products that make a meaningful
+          difference in people's lives.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>💎 Our Values</h3>
+        <p>
+          Integrity in every transaction. Excellence in every product. Innovation in every
+          solution. We hold ourselves to the highest standards and back every product we
+          offer with our commitment to quality.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>🏆 Our Promise</h3>
+        <p>
+          Every product bearing the GIL name has passed rigorous quality checks. We stand
+          behind our offerings completely, and our dedicated support team is always ready
+          to assist you on your journey with us.
+        </p>
+      </div>
+    </div>
+
+    <div id="contact-section">
+      <div class="sec-header" style="text-align:left;margin-bottom:28px;">
+        <span class="sec-tag">Contact Us</span>
+        <h2 class="sec-title" style="font-size:32px;">Get In Touch</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Our Address</h4>
+            <p>#10 E, Andrahalli Main Road,<br/>Balaji Nagar, Bengaluru,<br/>Karnataka – 560058</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:8884408891">+91 88844 08891</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:geozenixinnovations@gmail.com">geozenixinnovations@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>Mon – Sat: 9:00 AM – 6:00 PM<br/>Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map-inner">
+          <div style="font-size:32px;">🗺️</div>
+          <div>#10 E, Andrahalli Main Road, Balaji Nagar, Bengaluru – 560058</div>
+          <a href="https://maps.google.com/?q=Andrahalli+Main+Road+Balaji+Nagar+Bengaluru+560058" target="_blank" style="color:var(--gold);font-size:11px;letter-spacing:2px;margin-top:4px;">VIEW ON GOOGLE MAPS →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">GEOZENIX INNOVATIONS LLP</div>
+  <div class="footer-links">
+    <a href="#" onclick="showPage('home',null)">Home</a>
+    <a href="#" onclick="showPage('products',null)">All Products</a>
+    <a href="#" onclick="showPage('categories',null)">Category</a>
+    <a href="#" onclick="showPage('about',null)">About Us</a>
+    <a href="mailto:geozenixinnovations@gmail.com">Contact</a>
+  </div>
+  <div class="footer-copy">
+    © 2025 Geozenix Innovations LLP · Bengaluru, Karnataka · All rights reserved
+  </div>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-backdrop" id="productModal" onclick="closeModal(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-header">
+      <h3 id="modalTitle">Product Name</h3>
+      <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-img" id="modalIcon"></div>
+      <div class="modal-cat" id="modalCat"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-price-row">
+        <span class="modal-price-new" id="modalPriceNew"></span>
+        <span class="modal-price-old" id="modalPriceOld"></span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-primary" onclick="addToCart()">Add to Cart</button>
+      <button class="btn-outline" onclick="closeModalBtn()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Added to cart!</div>
+
+<script>
+// ========== PRODUCTS DATA ==========
+const categories = [
+  {name:'Technology',icon:'💻',count:95,desc:'Cutting-edge tech products and devices'},
+  {name:'Innovation',icon:'🔬',count:78,desc:'Breakthrough innovations and solutions'},
+  {name:'Solutions',icon:'⚙️',count:112,desc:'Smart solutions for modern challenges'},
+  {name:'Industrial',icon:'🏭',count:64,desc:'Precision industrial equipment and tools'},
+  {name:'Commercial',icon:'🏪',count:88,desc:'Premium commercial products and supplies'},
+  {name:'Engineering',icon:'🔧',count:53,desc:'Advanced engineering materials and tools'},
+];
+
+const products = [
+  // Technology
+  {id:1,name:'Smart Control Module Pro',cat:'Technology',icon:'💻',priceNew:4299,priceOld:6999,desc:'Advanced smart control module with IoT integration, wireless connectivity and real-time monitoring capabilities for industrial and commercial applications.'},
+  {id:2,name:'Precision Sensor Array',cat:'Technology',icon:'📡',priceNew:2799,priceOld:4500,desc:'High-precision multi-axis sensor array designed for demanding measurement environments. Delivers accurate, reliable data in real time.'},
+  {id:3,name:'Digital Interface Panel',cat:'Technology',icon:'🖥️',priceNew:8499,priceOld:11999,desc:'Robust digital interface panel with touchscreen controls, customisable display and modular input/output ports.'},
+  {id:4,name:'Connectivity Gateway',cat:'Technology',icon:'📶',priceNew:3199,priceOld:4799,desc:'Universal connectivity gateway supporting multiple protocols. Bridges legacy systems with modern network infrastructure seamlessly.'},
+  // Innovation
+  {id:5,name:'Nano-Composite Material Kit',cat:'Innovation',icon:'🔬',priceNew:12999,priceOld:18000,desc:'Advanced nano-composite material kit for research and development. Enables creation of next-generation lightweight and high-strength structures.'},
+  {id:6,name:'Micro-Fabrication System',cat:'Innovation',icon:'⚗️',priceNew:24999,priceOld:32000,desc:'Compact micro-fabrication system for precision component manufacturing. Ideal for R&D labs and prototyping facilities.'},
+  {id:7,name:'Bio-Signal Analyser',cat:'Innovation',icon:'🧬',priceNew:7499,priceOld:9999,desc:'Multi-channel bio-signal analyser with AI-assisted pattern recognition. Supports medical research and health monitoring applications.'},
+  {id:8,name:'Smart Material Tester',cat:'Innovation',icon:'🧪',priceNew:5599,priceOld:7800,desc:'Automated material testing unit with digital reporting. Tests tensile strength, flexibility and thermal properties with high accuracy.'},
+  // Solutions
+  {id:9,name:'ERP Integration Suite',cat:'Solutions',icon:'⚙️',priceNew:15000,priceOld:22000,desc:'Complete ERP integration suite that connects disparate business systems into a unified, manageable platform.'},
+  {id:10,name:'Workflow Automation Box',cat:'Solutions',icon:'🤖',priceNew:9499,priceOld:13500,desc:'Plug-and-play workflow automation device that streamlines repetitive tasks, reduces errors and boosts productivity.'},
+  {id:11,name:'Data Management Console',cat:'Solutions',icon:'🗄️',priceNew:6299,priceOld:8999,desc:'Centralised data management console with encrypted storage, intuitive dashboard and automated backup capabilities.'},
+  {id:12,name:'Process Optimiser Kit',cat:'Solutions',icon:'📊',priceNew:4799,priceOld:6500,desc:'Comprehensive process optimisation toolkit with monitoring sensors, analytics software and actionable reporting tools.'},
+  // Industrial
+  {id:13,name:'Industrial Grade Compressor',cat:'Industrial',icon:'🏭',priceNew:34999,priceOld:45000,desc:'Heavy-duty industrial compressor with energy-efficient motor, thermal protection and smart pressure management system.'},
+  {id:14,name:'Precision Lathe Chuck Set',cat:'Industrial',icon:'🔩',priceNew:5200,priceOld:7200,desc:'Professional-grade precision lathe chuck set with hardened jaws, self-centring mechanism and corrosion-resistant finish.'},
+  {id:15,name:'Hydraulic Press Unit',cat:'Industrial',icon:'⚒️',priceNew:18500,priceOld:24000,desc:'Robust hydraulic press with adjustable tonnage, safety pressure relief valve and heavy-gauge steel frame construction.'},
+  {id:16,name:'Industrial Safety Scanner',cat:'Industrial',icon:'🛡️',priceNew:11200,priceOld:15000,desc:'Real-time industrial safety scanner with multi-zone detection, alarm output and IP65-rated enclosure for harsh environments.'},
+  // Commercial
+  {id:17,name:'POS Terminal Pro',cat:'Commercial',icon:'🏪',priceNew:8900,priceOld:12000,desc:'Sleek all-in-one POS terminal with built-in receipt printer, barcode scanner, touchscreen display and cloud-based reporting.'},
+  {id:18,name:'Smart Inventory System',cat:'Commercial',icon:'📦',priceNew:6400,priceOld:8800,desc:'Automated smart inventory management system with RFID tracking, real-time stock alerts and supplier integration.'},
+  {id:19,name:'Commercial Display Unit',cat:'Commercial',icon:'🖼️',priceNew:14500,priceOld:19000,desc:'High-brightness commercial display unit with remote content management, portrait/landscape mode and 16/7 operation support.'},
+  {id:20,name:'Business Analytics Hub',cat:'Commercial',icon:'📈',priceNew:7800,priceOld:10500,desc:'Compact business analytics hub aggregating sales, inventory and customer data into a single, intuitive dashboard.'},
+  // Engineering
+  {id:21,name:'Precision Calibration Set',cat:'Engineering',icon:'🔧',priceNew:3800,priceOld:5500,desc:'NIST-traceable precision calibration set for measurement instruments. Includes a full range of standards and carrying case.'},
+  {id:22,name:'CAD Design Workstation',cat:'Engineering',icon:'🖱️',priceNew:52000,priceOld:68000,desc:'High-performance CAD workstation with professional GPU, certified display and optimised cooling for sustained rendering loads.'},
+  {id:23,name:'Structural Analysis Kit',cat:'Engineering',icon:'📐',priceNew:9200,priceOld:12500,desc:'Comprehensive structural analysis kit with FEA software, strain gauges and data acquisition module for load testing.'},
+  {id:24,name:'Fluid Dynamics Simulator',cat:'Engineering',icon:'💧',priceNew:17800,priceOld:23000,desc:'Desktop fluid dynamics simulator for research and education. Models complex flow scenarios with real-time visualisation.'},
+];
+
+let filteredProducts = [...products];
+let currentFilter = 'All';
+
+// ========== NAVIGATION ==========
+function showPage(page, link) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  if (link) link.classList.add('active');
+  window.scrollTo(0, 0);
+  if (page === 'products') renderProducts();
+  if (page === 'categories') renderCategories();
+  closeNavMenu();
+}
+
+function toggleNav() {
+  document.getElementById('mainNav').classList.toggle('open');
+}
+function closeNavMenu() {
+  document.getElementById('mainNav').classList.remove('open');
+}
+
+// ========== PRODUCTS ==========
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  const countEl = document.getElementById('productsCount');
+  const headerCount = document.getElementById('prod-count');
+  grid.innerHTML = '';
+  countEl.textContent = filteredProducts.length + ' products';
+  headerCount.textContent = products.length + ' products';
+  filteredProducts.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    const discount = Math.round((1 - p.priceNew / p.priceOld) * 100);
+    card.innerHTML = `
+      <div class="product-img-wrap">
+        <div class="product-placeholder">
+          <div class="product-icon-large">${p.icon}</div>
+          <div>${p.cat}</div>
+        </div>
+        ${discount > 0 ? `<div class="sale-badge">-${discount}%</div>` : ''}
+        <div class="product-overlay">
+          <button class="overlay-btn" onclick="openModal(${p.id})">Quick View</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-price-row">
+          <span class="price-new">₹${p.priceNew.toLocaleString('en-IN')}</span>
+          ${p.priceOld ? `<span class="price-old">₹${p.priceOld.toLocaleString('en-IN')}</span>` : ''}
+        </div>
+      </div>
+    `;
+    card.addEventListener('click', () => openModal(p.id));
+    grid.appendChild(card);
+  });
+}
+
+function filterProducts(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  filteredProducts = cat === 'All' ? [...products] : products.filter(p => p.cat === cat);
+  renderProducts();
+}
+
+function sortProducts(val) {
+  if (val === 'price-low') filteredProducts.sort((a,b) => a.priceNew - b.priceNew);
+  else if (val === 'price-high') filteredProducts.sort((a,b) => b.priceNew - a.priceNew);
+  else if (val === 'name') filteredProducts.sort((a,b) => a.name.localeCompare(b.name));
+  else filteredProducts = currentFilter === 'All' ? [...products] : products.filter(p => p.cat === currentFilter);
+  renderProducts();
+}
+
+// ========== CATEGORIES ==========
+function renderCategories() {
+  const grid = document.getElementById('catsGrid');
+  grid.innerHTML = '';
+  categories.forEach(cat => {
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.innerHTML = `
+      <div class="cat-bg">${cat.icon}</div>
+      <div class="cat-content">
+        <div class="cat-tag">Category</div>
+        <div class="cat-name">${cat.name}</div>
+        <div class="cat-count">${cat.count} products</div>
+        <div class="cat-arrow">Browse →</div>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      showPage('products', null);
+      filterProducts(cat.name, null);
+      document.querySelector('.filter-btn[onclick*="' + cat.name + '"]')?.classList.add('active');
+    });
+    grid.appendChild(card);
+  });
+}
+
+// ========== MODAL ==========
+function openModal(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalIcon').textContent = p.icon;
+  document.getElementById('modalCat').textContent = p.cat;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalPriceNew').textContent = '₹' + p.priceNew.toLocaleString('en-IN');
+  document.getElementById('modalPriceOld').textContent = p.priceOld ? '₹' + p.priceOld.toLocaleString('en-IN') : '';
+  document.getElementById('productModal').classList.add('open');
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('productModal')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('productModal').classList.remove('open');
+}
+
+// ========== CART ==========
+function addToCart() {
+  closeModalBtn();
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ========== UTILS ==========
+function scrollToContact() {
+  document.getElementById('contact-section').scrollIntoView({behavior:'smooth'});
+}
+
+// Init
+renderProducts();
+renderCategories();
+</script>
+</body>
+</html>
